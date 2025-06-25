@@ -1,29 +1,4 @@
-vim.g.skip_loading_mswin = 1 -- disables windows keybinds
-
--- Extension for CBScript files for my LSP
-vim.filetype.add({
-	extension = {
-		cbscript = "cbscript",
-		cblib = "cbscript",
-	},
-})
-
--- Color for CBScript files for my LSP
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client then
-			if client.server_capabilities.semanticTokensProvider then
-				vim.api.nvim_set_hl(0, "@lsp.type.string", { link = "String" })
-				vim.api.nvim_set_hl(0, "@lsp.type.number", { link = "Number" })
-				vim.api.nvim_set_hl(0, "@lsp.type.operator", { link = "Operator" })
-				vim.api.nvim_set_hl(0, "@lsp.type.keyword", { link = "Keyword" })
-				vim.api.nvim_set_hl(0, "@lsp.type.comment", { link = "Comment" })
-				vim.api.nvim_set_hl(0, "@lsp.type.punctuation", { link = "Delimiter" })
-			end
-		end
-	end,
-})
+-- vim.g.skip_loading_mswin = 1 -- disables windows keybinds (WSL)
 
 -- Set <space> as the leader key
 vim.g.mapleader = " "
